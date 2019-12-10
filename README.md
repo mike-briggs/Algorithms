@@ -31,4 +31,4 @@ Total Iterations: 8120
 Encodes and decodes files using huffman coding
 
 ### Difference between files
-Finds the line by line differences between two files using Dynamic programming
+Finds the line by line differences between two files using Dynamic programming - Longest Common Substring
