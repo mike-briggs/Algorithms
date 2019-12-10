@@ -8,11 +8,15 @@ Used Dijkstra's Algorithm to calculate best flight paths from given .txt input
 Brute force and Horowitz/Sahni algorithms to caluculate a subset with a target sum k within a given array
 
 ```
--------------------
-TESTING HS
--------------------
+Example:
+Target:310
 Input: [56, 34, 7, 3, 13, 96, 66, 62, 18, 71, 33, 2, 36, 14, 83]
-Subsets found..... with Target:310
+Subsets found..... 
+
+-------------------
+TESTING HOROWITZ/SAHNI
+-------------------
+
 [7] -- and -- [62, 18, 71, 33, 36, 83]
 Total Iterations: 314
 
