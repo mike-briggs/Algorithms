@@ -11,30 +11,16 @@ import java.nio.file.Paths;
 /*“I certify that this submission contains my own work, except as noted"
  * Michael Briggs
  * 20013906
- * 
- *
  */
 public class Subset {
 
 	private int iterations;
 	
-
 	public static void main(String[] args) {
 			
 		Subset s = new Subset();
 		
 		ArrayList<Integer> eval = new ArrayList<>();
-		
-		/*eval.add(3);
-		eval.add(5);
-		eval.add(3);
-		eval.add(9);
-		
-		eval.add(18);
-		eval.add(4);
-		eval.add(5);
-		eval.add(6);
-		eval.add(1);*/
 		
 		eval.add(400);
 		eval.add(20);
@@ -98,39 +84,20 @@ public class Subset {
 					avg_iterations2 = avg_iterations2 + s.iterations;
 					s.iterations = 0;
 				}
+				
 				avg_iterations = avg_iterations/10;
 				avg_iterations2 = avg_iterations2/10;
 				System.out.println("Avg Iterations (HS): "+ avg_iterations);
 				System.out.println("Avg Iterations (Brute Force): "+ avg_iterations2);
 				System.out.println();
-				
-				
-				//System.out.println(i+"  "+n+"   "+temp);
 			}
-			
 		}
-		
-		//res = s.HS_Subset_Sum(eval, 450);
-		//ret = s.modified_BFI_Subset_Sum(eval);
-		//for(Set i : ret) {
-			
-		//System.out.println("Sum:   "+i.sum+ "   Set:   "+i.a);
-		
-		
-		//}
-		
-		
-		
-		
-		
-
 	}
 	
 	public int Sum(ArrayList<Integer> S){
 		
 		int sum = 0;
 		
-	
 		for(Integer i : S) {
 			sum = sum + i;
 		}
@@ -148,17 +115,20 @@ public class Subset {
 		return temp;
 	}
 	
-public ArrayList<Integer> rightHalf(ArrayList<Integer> a){
-	ArrayList<Integer> temp = new ArrayList<>();
-	for(int i = a.size()/2; i < (a.size());i++) {
-		temp.add(a.get(i));
-	}
+	public ArrayList<Integer> rightHalf(ArrayList<Integer> a){
+		ArrayList<Integer> temp = new ArrayList<>();
+		
+		for(int i = a.size()/2; i < (a.size());i++) {
+			temp.add(a.get(i));
+		}
 	
-	return temp;
+		return temp;
 	}
 
 
-	
+	/*
+	 * More efficient solution computing Pair Sums
+	 */
 	@SuppressWarnings("deprecation")
 	public Set HS_Subset_Sum(ArrayList<Integer> S, int k){
 		
@@ -191,27 +161,12 @@ public ArrayList<Integer> rightHalf(ArrayList<Integer> a){
 			}
 			iterations++;
 		}
-		/*for(Set s : left_sets) {
-			System.out.println("Sum:  "+s.sum+"  "+s.a);
-		}
-		for(Set s : right_sets) {
-			System.out.println("-Sum:  "+s.sum+"  "+s.a);
-		}*/
 		
 		iterations = iterations + (int) (left_sets.size()*Math.log(left_sets.size()));
 		iterations = iterations + (int) (right_sets.size()*Math.log(right_sets.size()));
 		Collections.sort(left_sets, (o1, o2) -> (new Integer(o1.sum)).compareTo(new Integer(o2.sum)));
 		Collections.sort(right_sets, (o1, o2) -> (new Integer(o1.sum)).compareTo(new Integer(o2.sum)));
-		/*for(Set s : left_sets) {
-			System.out.println("--Sum:  "+s.sum+"  "+s.a);
-		}
-		for(Set s : right_sets) {
-			System.out.println("---Sum:  "+s.sum+"  "+s.a);
-		}*/
-		
-		//System.out.println(left_half);
-		//System.out.println(right_half);
-		
+
 		Pair subset_pair = PairSum(left_sets,right_sets,k);
 		
 		if(subset_pair==null) {
@@ -221,9 +176,7 @@ public ArrayList<Integer> rightHalf(ArrayList<Integer> a){
 			System.out.println("Subsets found..... with Target:"+k);
 			System.out.println(subset_pair.x.a +" -- and -- "+ subset_pair.y.a);
 		}
-		
-			
-		
+
 		return null;
 	}
 	
@@ -273,12 +226,9 @@ public ArrayList<Integer> rightHalf(ArrayList<Integer> a){
 				//New set object with old_u and current S element
 				ArrayList<Integer> new_elements = new ArrayList<>(old_u.a);
 				new_elements.add(S.get(i));
-				//System.out.println(new_elements);
-				//System.out.println(old_u.a);
+
 				Set new_u = new Set(old_u.sum + S.get(i), new_elements);
-				//System.out.println("old_u:   "+ old_u.sum +" "+old_u.a);
-				//System.out.println("new_u:   "+ new_u.sum +" "+new_u.a);
-				//System.out.println(new_u);
+
 				new_subsets.add(old_u);
 				new_subsets.add(new_u);
 				
@@ -286,15 +236,15 @@ public ArrayList<Integer> rightHalf(ArrayList<Integer> a){
 				all_subsets.add(new_u);
 			}
 			subsets = new_subsets;
-			
 		}
-		
 		return all_subsets;
-		
-		
-		
-		
 	}
+	
+	
+	/*
+	 * Brute Force Solution to compute subset with target sum k
+	 *
+	 */
 	
 	public Set BFI_Subset_Sum(ArrayList<Integer> S, int k){
 		ArrayList<Integer> empty_list = new ArrayList<>();
@@ -309,18 +259,11 @@ public ArrayList<Integer> rightHalf(ArrayList<Integer> a){
 			ArrayList<Set> new_subsets = new ArrayList<>();
 			
 			for(Set old_u : subsets) {
-				//Set temp = new Set(old_u.sum,old_u.a);
-				//int S_i = S.get(i);
-				//temp.a.add(S_i);
-				//temp.sum+=S_i;
-				
-				
+
 				ArrayList<Integer> new_elements = new ArrayList<>(old_u.a);
 				new_elements.add(S.get(i));
 				Set new_u = new Set(old_u.sum + S.get(i), new_elements);
-				//Set new_u = new Set(temp.sum,temp.a);
-				//System.out.println(temp.sum);
-				//System.out.println(new_u.sum);
+			
 				if(new_u.sum == k) {
 					System.out.println("Subset found...");
 					System.out.println(new_u.a);
