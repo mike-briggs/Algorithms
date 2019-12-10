@@ -7,11 +7,6 @@ import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-
-/*“I certify that this submission contains my own work, except as noted"
- * Michael Briggs
- * 20013906
- */
 public class Subset {
 
 	private int iterations;
