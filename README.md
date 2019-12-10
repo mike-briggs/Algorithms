@@ -1,5 +1,5 @@
 # Algorithms
-Various implementations of known algorithms in Java
+Various implementations of known algorithms in Java & MATLAB
 
 ### Travel Planning
 Used Dijkstra's Algorithm to calculate best flight paths from given .txt input
