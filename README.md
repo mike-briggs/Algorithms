@@ -1,6 +1,12 @@
 # Algorithms
 Various implementations of known algorithms in Java & MATLAB
 
+### Conditional Gaussian & Naive Bayes Classifiers
+
+### K-Means, Median and Medoid Clustering
+
+### Feed-Forward NN
+
 ### Travel Planning
 Used Dijkstra's Algorithm to calculate best flight paths from given .txt input
 
