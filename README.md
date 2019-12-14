@@ -2,7 +2,7 @@
 Various implementations of known algorithms in Java
 
 ### Travel Planning
-Used Dijkstra's Algorithm to calculate best flight paths from given .txt input
+Dijkstra's Algorithm to calculate best flight paths from given .txt input with restrictions
 
 ### Subset with Sum
 Brute force and Horowitz/Sahni algorithms to caluculate a subset with a target sum k within a given array
